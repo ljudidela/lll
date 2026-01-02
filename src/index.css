@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+:root {
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
 /* Custom Scrollbar */
@@ -26,5 +25,11 @@ body {
 .leaflet-container {
   width: 100%;
   height: 100%;
-  background: #0f172a;
+  background: #0f172a !important;
+}
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
