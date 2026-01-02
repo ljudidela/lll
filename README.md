@@ -1,17 +1,14 @@
 # LA Live Cams
 
-Современное приложение для просмотра вебкамер Лос-Анджелеса с интерактивной картой.
+Modern Webcam Explorer for Los Angeles.
 
-## Стек технологий
-- React + Vite
-- Tailwind CSS (Стилизация)
-- React Leaflet (Карты)
-- React Player (Видео)
+## Features
+- Interactive Map (Dark Mode)
+- Live Stream integration
+- Responsive Design
 
-## Установка и запуск
+## Quick Start
 
 ```bash
 npm install && npm run dev
 ```
-
-Открыть в браузере ссылку, предложенную Vite (обычно http://localhost:5173).
