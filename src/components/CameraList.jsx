@@ -2,33 +2,40 @@ import { Play } from 'lucide-react';
 
 export default function CameraList({ cameras, onSelect, selectedId }) {
   return (
-    <div className="h-full overflow-y-auto p-4 space-y-4 pb-24">
+    <div className="grid grid-cols-1 gap-4 p-4 pb-24 md:pb-4">
       {cameras.map((cam) => (
         <div 
           key={cam.id} 
           onClick={() => onSelect(cam)}
-          className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 border border-slate-700 hover:border-la-accent ${
-            selectedId === cam.id ? 'ring-2 ring-la-accent ring-offset-2 ring-offset-slate-900' : ''
-          }`}
+          className={`
+            group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300
+            border border-slate-700 hover:border-blue-400
+            ${selectedId === cam.id ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : 'bg-slate-800'}
+          `}
         >
-          {/* Thumbnail */}
-          <div className="aspect-video w-full relative">
+          <div className="aspect-video relative overflow-hidden">
             <img 
               src={cam.thumbnail} 
               alt={cam.title} 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
             />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-               <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play size={20} className="fill-white text-white ml-1" />
-               </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 p-4 w-full">
+              <h3 className="text-white font-bold text-lg leading-tight group-hover:text-blue-300 transition-colors">
+                {cam.title}
+              </h3>
+              <p className="text-slate-300 text-sm flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                {cam.location}
+              </p>
             </div>
-          </div>
-          
-          {/* Info */}
-          <div className="p-3 bg-slate-800">
-            <h3 className="font-semibold text-white truncate">{cam.title}</h3>
-            <p className="text-xs text-slate-400">{cam.location}</p>
+
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
+              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                <Play className="w-8 h-8 text-white fill-white" />
+              </div>
+            </div>
           </div>
         </div>
       ))}
